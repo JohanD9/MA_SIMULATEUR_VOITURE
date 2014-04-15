@@ -8,6 +8,7 @@ public class Voiture extends Observable {
 	private int vitesseMetreParSecondes;
 
 	public static final int largeurDomaine = 1000;
+	private final int modificationVitesseMetreSeconde = 10;
 
 	public Voiture(int coordXEnMetres) {
 		this.coordXEnMetres = coordXEnMetres;
@@ -28,8 +29,8 @@ public class Voiture extends Observable {
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		if((coordXEnMetres + vitesseMetreParSecondes + 80) > largeurDomaine){
-			coordXEnMetres = largeurDomaine - 80;
+		if((coordXEnMetres + vitesseMetreParSecondes + 20) > largeurDomaine){
+			coordXEnMetres = largeurDomaine - 20;
 		}
 		else{
 			coordXEnMetres += vitesseMetreParSecondes;
@@ -41,5 +42,45 @@ public class Voiture extends Observable {
 	private void notificationObservateurs() {
 		this.setChanged();
 		this.notifyObservers();
+	}
+
+	public void accelerationVitesseMetreSeconde() {
+		this.vitesseMetreParSecondes = this.vitesseMetreParSecondes + modificationVitesseMetreSeconde;
+		
+	}
+
+	public void ralentissementVitesseMetreSeconde() {
+		this.vitesseMetreParSecondes = this.vitesseMetreParSecondes - modificationVitesseMetreSeconde;
+		
+	}
+	
+	public void modifierVitesseMetreSeconde(Direction direction) {
+		switch(direction) {
+			case HAUT : if(this.direction == Direction.HAUT) {
+							accelerationVitesseMetreSeconde();
+						} else if (this.direction == Direction.BAS) {
+							ralentissementVitesseMetreSeconde();
+						}
+				break;
+			case DROITE: if(this.direction == Direction.DROITE) {
+							accelerationVitesseMetreSeconde();
+						} else if (this.direction == Direction.GAUCHE) {
+							ralentissementVitesseMetreSeconde();
+						}
+				break;
+			case BAS : if(this.direction == Direction.BAS) {
+							accelerationVitesseMetreSeconde();
+						} else if (this.direction == Direction.HAUT) {
+							ralentissementVitesseMetreSeconde();
+						}
+				break;
+			case GAUCHE :  if(this.direction == Direction.GAUCHE) {
+								accelerationVitesseMetreSeconde();
+							} else if (this.direction == Direction.DROITE) {
+								ralentissementVitesseMetreSeconde();
+							}
+				break;
+			default :
+		}
 	}
 }

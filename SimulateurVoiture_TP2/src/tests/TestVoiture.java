@@ -39,8 +39,42 @@ public class TestVoiture {
 	public void testMaximumPosition(){
 		Voiture voiture = new Voiture(950,100);
 		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(1000, voiture.getCoordXEnMetres());
+		assertEquals(980, voiture.getCoordXEnMetres());
+	}
+	
+	@Test
+	public void testAccelerationVitesseMetreSeconde () {
+		Voiture voiture = new Voiture (500, 50);
+		
+		voiture.accelerationVitesseMetreSeconde();
+		
+		assertEquals(60, voiture.getVitesseMetreParSecondes());
+	}
+	
+	@Test
+	public void testRalentissementVitesseMetreSeconde () {
+		Voiture voiture = new Voiture (500, 50);
+		
+		voiture.ralentissementVitesseMetreSeconde();
+		
+		assertEquals(40, voiture.getVitesseMetreParSecondes());
 	}
 
+	@Test
+	public void testModifierAccelerationVitesseMetreSeconde () {
+		Voiture voiture = new Voiture (500, 50);
+		
+		voiture.modifierVitesseMetreSeconde(Direction.DROITE);
+		assertEquals(60, voiture.getVitesseMetreParSecondes());
+	}
+	
+	@Test
+	public void testModifierRalentissementVitesseMetreSeconde () {
+		Voiture voiture = new Voiture (500, 50);
+		
+		voiture.modifierVitesseMetreSeconde(Direction.GAUCHE);
+		
+		assertEquals(40, voiture.getVitesseMetreParSecondes());
+	}
 	
 }
