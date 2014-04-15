@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import domaineConduite.Direction;
 import domaineConduite.Voiture;
 
 public class DessinVoiture extends JFrame{
@@ -46,15 +45,15 @@ public class DessinVoiture extends JFrame{
 					break;
 
 				case KeyEvent.VK_DOWN:
-					voiture.setDirection(Direction.BAS);
+					this.voiture.setDirection(Direction.BAS);
 					break;
 					
 				case KeyEvent.VK_RIGHT:
-					voiture.setDirection(Direction.DROITE);
+					this.voiture.setDirection(Direction.DROITE);
 					break;
 					
 				case KeyEvent.VK_LEFT:
-					voiture.setDirection(Direction.GAUCHE);
+					this.voiture.setDirection(Direction.GAUCHE);
 					break;
 				}
 				
