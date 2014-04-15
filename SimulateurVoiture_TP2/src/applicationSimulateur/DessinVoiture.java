@@ -26,8 +26,7 @@ public class DessinVoiture extends JFrame {
 	}
 
 	public void dessinerVoiture(int xPixelVoiture, Graphics graphics) {
-		graphics.fillRect(xPixelVoiture - 40, 200, 40, 20);
-		graphics.fillRect(xPixelVoiture, 200, 40, 20);
+		graphics.fillRect(xPixelVoiture, 200, 20, 20);
 
 	}
 
