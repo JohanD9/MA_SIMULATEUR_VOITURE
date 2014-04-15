@@ -5,7 +5,6 @@ import java.util.Observer;
 
 import domaineConduite.Voiture;
 
-
 public class VueVoiture implements Observer {
 	private Voiture voiture;
 	private DessinVoiture ihm;
@@ -27,7 +26,8 @@ public class VueVoiture implements Observer {
 
 	public int transformerMetrePixel(int coordonneeXEnMetre) {
 
-		int ratioDomaineFenetre = Voiture.largeurDomaine / DessinVoiture.TailleFenetreEnPixels;
+		int ratioDomaineFenetre = Voiture.largeurDomaine
+				/ DessinVoiture.TailleFenetreEnPixels;
 
 		int coordonneeXEnPixels = coordonneeXEnMetre / ratioDomaineFenetre;
 
@@ -39,7 +39,7 @@ public class VueVoiture implements Observer {
 
 		int xVoiture = this.voiture.getCoordXEnMetres();
 		int xPixelVoiture = this.transformerMetrePixel(xVoiture);
-		ihm.setXPixelVoiture(xPixelVoiture);
+		ihm.setXPixelVoiture(xPixelVoiture - 10);
 		ihm.repaint();
 
 	}

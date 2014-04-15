@@ -6,41 +6,37 @@ import org.junit.Test;
 
 import domaineConduite.Voiture;
 
-
-
 public class TestVoiture {
-	
 
 	@Test
-	public void testGetX(){
-		Voiture voiture = new Voiture(20) ;
-		
-		int xVoiture = voiture.getCoordXEnMetres() ;
-		
-		assertEquals(20, xVoiture);
-		
+	public void testGetX() {
+		Voiture voiture = new Voiture(20);
+
+		int xVoiture = voiture.getCoordXEnMetres();
+
+		assertEquals(30, xVoiture);
+
 	}
-	
+
 	@Test
 	public void testVitesseX() {
-		Voiture voiture = new Voiture(20,150);
-		
-		assertEquals(150,voiture.getVitesseMetreParSecondes());
-	}
-	
-	@Test
-	public void testMiseAjourPositionEnFonctionVitesse() {
-		Voiture voiture = new Voiture(20,100);
-		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(120, voiture.getCoordXEnMetres());
-	}
-	
-	@Test
-	public void testMaximumPosition(){
-		Voiture voiture = new Voiture(950,100);
-		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(1000, voiture.getCoordXEnMetres());
+		Voiture voiture = new Voiture(20, 150);
+
+		assertEquals(150, voiture.getVitesseMetreParSecondes());
 	}
 
-	
+	@Test
+	public void testMiseAjourPositionEnFonctionVitesse() {
+		Voiture voiture = new Voiture(20, 100);
+		voiture.avancerEnFonctionDeLaVitesse();
+		assertEquals(130, voiture.getCoordXEnMetres());
+	}
+
+	@Test
+	public void testMaximumPosition() {
+		Voiture voiture = new Voiture(950, 100);
+		voiture.avancerEnFonctionDeLaVitesse();
+		assertEquals(980, voiture.getCoordXEnMetres());
+	}
+
 }
