@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;triangle&apos; in &apos;applicationSimulateur.SimulateurVoiture.main(...)&apos; to &apos;carre&apos;&#x0A;- Original project: &apos;SimulateurVoiture_TP2&apos;&#x0A;- Original element: &apos;applicationSimulateur.SimulateurVoiture.main(String[]).triangle&apos;&#x0A;- Renamed element: &apos;triangle&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;triangle&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;applicationSimulateur{SimulateurVoiture.java[SimulateurVoiture~main~\[QString;@triangle!412!478!429!436!QVueVoiture;!67108880!false" name="carre" references="true" stamp="1397563122337" version="1.0"/>
-</session>
