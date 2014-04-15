@@ -16,6 +16,7 @@ public class SimulateurVoiture {
 		
 		final Voiture voiture = new Voiture(50,30);
 		DessinVoiture dessinVoiture = new DessinVoiture(voiture);
+		
 		final VueVoiture carre = new VueVoiture(voiture, dessinVoiture);
 		
 		Timer timerAvancer = new Timer(dureeUneSecondeEnMilliSecondes, new ActionListener() {

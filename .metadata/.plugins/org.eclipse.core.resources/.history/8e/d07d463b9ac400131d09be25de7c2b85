@@ -28,8 +28,8 @@ public class Voiture extends Observable {
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		if((coordXEnMetres + vitesseMetreParSecondes + 20) > largeurDomaine){
-			coordXEnMetres = largeurDomaine - 10;
+		if((coordXEnMetres + vitesseMetreParSecondes + 80) > largeurDomaine){
+			coordXEnMetres = largeurDomaine - 80;
 		}
 		else{
 			coordXEnMetres += vitesseMetreParSecondes;

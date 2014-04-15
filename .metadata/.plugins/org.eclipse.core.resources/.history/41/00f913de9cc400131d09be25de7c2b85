@@ -37,19 +37,19 @@ public class DessinVoiture extends JFrame{
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-						voiture.setDirection(Direction.HAUT)
+						System.out.println("HAUT");
 					break;
 
 				case KeyEvent.VK_DOWN:
-					voiture.setDirection(Direction.BAS)
+						System.out.println("BAS");
 					break;
 					
 				case KeyEvent.VK_RIGHT:
-					voiture.setDirection(Direction.DROITE)
+						System.out.println("DROITE");
 					break;
 					
 				case KeyEvent.VK_LEFT:
-					voiture.setDirection(Direction.GAUCHE)
+						System.out.println("GAUCHE");
 					break;
 				}
 				

@@ -39,7 +39,7 @@ public class TestVoiture {
 	public void testMaximumPosition(){
 		Voiture voiture = new Voiture(960,100);
 		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(980, voiture.getCoordXEnMetres());
+		assertEquals(1000, voiture.getCoordXEnMetres());
 	}
 
 	
