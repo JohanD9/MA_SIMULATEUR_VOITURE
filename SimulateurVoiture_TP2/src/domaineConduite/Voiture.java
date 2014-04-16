@@ -1,7 +1,5 @@
 package domaineConduite;
 
-import java.util.Observable;
-
 public class Voiture extends Observable {
 
 	private int coordXEnMetres;

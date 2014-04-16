@@ -1,14 +1,5 @@
 package applicationSimulateur;
 
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.JFrame;
-
-import domaineConduite.Direction;
-import domaineConduite.Voiture;
-
 public class DessinVoiture extends JFrame{
 
 	public static final int TailleFenetreEnPixels = 500;

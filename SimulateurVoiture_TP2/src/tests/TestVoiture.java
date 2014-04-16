@@ -1,11 +1,4 @@
-package tests;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import domaineConduite.Direction;
-import domaineConduite.Voiture;
+package src.tests;
 
 
 
