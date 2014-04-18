@@ -1,30 +1,44 @@
 package domaineConduite;
 
+import java.util.Observable;
+
 public class Voiture extends Observable {
 
 	private int coordXEnMetres;
 	private int vitesseMetreParSecondes;
 	private int coordYEnMetres;
+	private int longueurVoiture;
 	private Direction direction;
 
 	public static final int largeurDomaine = 1000;
 
-	public Voiture(int coordXEnMetres) {
+	public Voiture(int coordXEnMetres, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
+		this.longueurVoiture = longueurVoiture;
 		this.vitesseMetreParSecondes = 0;
 	}
 
-	public Voiture(int coordXEnMetres, int coordYEnMetres, int vitesseMetreParSecondes)
+	public Voiture(int coordXEnMetres, int coordYEnMetres, int vitesseMetreParSecondes, int longueurVoiture)
 	{
 		this.coordXEnMetres = coordXEnMetres;
 		this.coordYEnMetres = coordYEnMetres;
 		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
+		this.longueurVoiture = longueurVoiture;
 		this.direction = Direction.DROITE;
 	}
 	
-	public Voiture(int coordXEnMetres, int vitesseMetreParSecondes) {
+	public Voiture(int coordXEnMetres, int vitesseMetreParSecondes, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
+		this.longueurVoiture = longueurVoiture;
 		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
+	}
+
+	public int getLongueurVoiture() {
+		return longueurVoiture;
+	}
+
+	public void setLongueurVoiture(int longueurVoiture) {
+		this.longueurVoiture = longueurVoiture;
 	}
 
 	public int getCoordXEnMetres() {
@@ -52,8 +66,8 @@ public class Voiture extends Observable {
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		if((coordXEnMetres + vitesseMetreParSecondes + 20) > largeurDomaine){
-			coordXEnMetres = largeurDomaine - 20;
+		if((coordXEnMetres + vitesseMetreParSecondes + this.longueurVoiture) > largeurDomaine){
+			coordXEnMetres = largeurDomaine - this.longueurVoiture*2;
 
 		}
 		else{

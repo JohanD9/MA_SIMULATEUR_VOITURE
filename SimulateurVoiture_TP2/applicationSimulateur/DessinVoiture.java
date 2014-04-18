@@ -1,5 +1,14 @@
 package applicationSimulateur;
 
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+
+import domaineConduite.Direction;
+import domaineConduite.Voiture;
+
 public class DessinVoiture extends JFrame{
 
 	public static final int TailleFenetreEnPixels = 500;
@@ -61,7 +70,7 @@ public class DessinVoiture extends JFrame{
 	}
 
 	public void dessinerVoiture(int xPixelVoiture, Graphics graphics) {
-		graphics.fillRect(xPixelVoiture, 200, 20, 20);
+		graphics.fillRect(xPixelVoiture, 200, this.voiture.getLongueurVoiture(), this.voiture.getLongueurVoiture());
 
 	}
 

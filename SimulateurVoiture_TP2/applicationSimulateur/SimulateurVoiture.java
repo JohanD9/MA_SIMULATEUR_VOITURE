@@ -1,5 +1,12 @@
 package applicationSimulateur;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
+import domaineConduite.Voiture;
+
 
 public class SimulateurVoiture {
 
@@ -7,7 +14,7 @@ public class SimulateurVoiture {
 
 	public static void main(String[] args) {
 		
-		final Voiture voiture = new Voiture(50,30);
+		final Voiture voiture = new Voiture(50,50, 20);
 		DessinVoiture dessinVoiture = new DessinVoiture(voiture);
 		final VueVoiture carre = new VueVoiture(voiture, dessinVoiture);
 		
