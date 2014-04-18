@@ -1,4 +1,4 @@
-package applicationSimulateur;
+package src.applicationSimulateur;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;

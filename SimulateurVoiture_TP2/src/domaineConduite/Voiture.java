@@ -1,6 +1,9 @@
-package domaineConduite;
+package src.domaineConduite;
 
 import java.util.Observable;
+
+import domaineConduite.Direction;
+
 
 public class Voiture extends Observable {
 
