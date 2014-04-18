@@ -3,8 +3,8 @@ package applicationSimulateur;
 import java.util.Observable;
 import java.util.Observer;
 
+import domaineConduite.Direction;
 import domaineConduite.Voiture;
-
 
 public class VueVoiture implements Observer {
 	private Voiture voiture;
@@ -25,21 +25,30 @@ public class VueVoiture implements Observer {
 		this.ihm = ihm;
 	}
 
-	public int transformerMetrePixel(int coordonneeXEnMetre) {
+	public int transformerMetrePixel(int coordonneeEnMetre) {
 
-		int ratioDomaineFenetre = Voiture.largeurDomaine / DessinVoiture.TailleFenetreEnPixels;
+		int ratioDomaineFenetre = Voiture.tailleDomaine
+				/ DessinVoiture.TailleFenetreEnPixels;
 
-		int coordonneeXEnPixels = coordonneeXEnMetre / ratioDomaineFenetre;
+		int coordonneeEnPixels = coordonneeEnMetre / ratioDomaineFenetre;
 
-		return coordonneeXEnPixels;
+		return coordonneeEnPixels;
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-
-		int xVoiture = this.voiture.getCoordXEnMetres();
-		int xPixelVoiture = this.transformerMetrePixel(xVoiture);
-		ihm.setXPixelVoiture(xPixelVoiture);
+		if (this.voiture.getDirection().equals(Direction.DROITE)
+				|| (this.voiture.getDirection().equals(Direction.GAUCHE))) {
+			int xVoiture = this.voiture.getCoordXEnMetres();
+			int xPixelVoiture = this.transformerMetrePixel(xVoiture);
+			ihm.setXPixelVoiture(xPixelVoiture);
+		}
+		if (this.voiture.getDirection().equals(Direction.HAUT)
+				|| (this.voiture.getDirection().equals(Direction.BAS))) {
+			int yVoiture = this.voiture.getCoordYEnMetres();
+			int yPixelVoiture = this.transformerMetrePixel(yVoiture);
+			ihm.setYPixelVoiture(yPixelVoiture);
+		}
 		ihm.repaint();
 
 	}
