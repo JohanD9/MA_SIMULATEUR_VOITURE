@@ -14,8 +14,8 @@ public class SimulateurVoiture {
 
 	public static void main(String[] args) {
 		
-		DessinVoiture dessinVoiture = new DessinVoiture();
 		final Voiture voiture = new Voiture(50,30);
+		DessinVoiture dessinVoiture = new DessinVoiture(voiture);
 		final VueVoiture carre = new VueVoiture(voiture, dessinVoiture);
 		
 		Timer timerAvancer = new Timer(dureeUneSecondeEnMilliSecondes, new ActionListener() {

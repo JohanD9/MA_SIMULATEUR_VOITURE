@@ -6,19 +6,24 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import domaineConduite.Direction;
+import domaineConduite.Voiture;
+
 public class DessinVoiture extends JFrame{
 
 	public static final int TailleFenetreEnPixels = 500;
 	
+	private Voiture voiture;
 	private int xPixelVoiture;
 
-	public DessinVoiture() {
+	public DessinVoiture(Voiture voitureParam) {
 		super();
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
 		this.xPixelVoiture = 0;
 		this.setFocusable(true);
+		this.voiture = voitureParam;
 		this.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -37,19 +42,23 @@ public class DessinVoiture extends JFrame{
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-						System.out.println("HAUT");
+					voiture.setDirection(Direction.HAUT);
+					voiture.modifierVitesseMetreSeconde(Direction.HAUT);
 					break;
 
 				case KeyEvent.VK_DOWN:
-						System.out.println("BAS");
+					voiture.setDirection(Direction.BAS);
+					voiture.modifierVitesseMetreSeconde(Direction.BAS);
 					break;
 					
 				case KeyEvent.VK_RIGHT:
-						System.out.println("DROITE");
+					voiture.setDirection(Direction.DROITE);
+					voiture.modifierVitesseMetreSeconde(Direction.DROITE);
 					break;
 					
 				case KeyEvent.VK_LEFT:
-						System.out.println("GAUCHE");
+					voiture.setDirection(Direction.GAUCHE);
+					voiture.modifierVitesseMetreSeconde(Direction.GAUCHE);
 					break;
 				}
 				

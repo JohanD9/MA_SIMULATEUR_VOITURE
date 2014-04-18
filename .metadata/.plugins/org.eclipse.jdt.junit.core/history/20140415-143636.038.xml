@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestVoiture" project="SimulateurVoiture_TP2" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.TestVoiture" time="0.022">
+    <testcase name="testVitesseX" classname="tests.TestVoiture" time="0.011"/>
+    <testcase name="testGetX" classname="tests.TestVoiture" time="0.0"/>
+    <testcase name="testMiseAjourPositionEnFonctionVitesse" classname="tests.TestVoiture" time="0.002"/>
+    <testcase name="testMaximumPosition" classname="tests.TestVoiture" time="0.008"/>
+  </testsuite>
+</testrun>
