@@ -15,14 +15,18 @@ public class DessinVoiture extends JFrame{
 	
 	private Voiture voiture;
 	private int xPixelVoiture;
-
+	private int yPixelVoiture;
+	
 	public DessinVoiture(Voiture voitureParam) {
 		super();
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
-		this.xPixelVoiture = 0;
+		this.xPixelVoiture = voitureParam.getCoordXEnMetres();
+		this.yPixelVoiture = voitureParam.getCoordYEnMetres();
 		this.setFocusable(true);
+		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		this.voiture = voitureParam;
 		this.addKeyListener(new KeyListener() {
 			
@@ -40,9 +44,10 @@ public class DessinVoiture extends JFrame{
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
+				Direction dirPrecedente = DessinVoiture.this.voiture.getDirection();
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-					voiture.setDirection(Direction.HAUT);
+						voiture.setDirection(Direction.HAUT);
 					break;
 
 				case KeyEvent.VK_DOWN:
@@ -57,7 +62,9 @@ public class DessinVoiture extends JFrame{
 					voiture.setDirection(Direction.GAUCHE);
 					break;
 				}
-				
+				if (dirPrecedente!=DessinVoiture.this.voiture.getDirection()){
+					DessinVoiture.this.voiture.avancerEnFonctionDeLaVitesse();
+				}
 			}
 		});
 	}
@@ -65,17 +72,20 @@ public class DessinVoiture extends JFrame{
 	@Override
 	public void paint(Graphics graphics) {
 		super.paint(graphics);
-		dessinerVoiture(this.xPixelVoiture, graphics);
+		dessinerVoiture(this.xPixelVoiture, this.yPixelVoiture, graphics);
 
 	}
 
-	public void dessinerVoiture(int xPixelVoiture, Graphics graphics) {
-		graphics.fillRect(xPixelVoiture, 200, this.voiture.getLongueurVoiture(), this.voiture.getLongueurVoiture());
-
+	public void dessinerVoiture(int xPixelVoiture, int yPixelVoiture, Graphics graphics) {
+		graphics.fillRect(xPixelVoiture, yPixelVoiture, this.voiture.getLongueurVoiture(), this.voiture.getLongueurVoiture());
 	}
 
 	public void setXPixelVoiture(int xPixelVoiture) {
 		this.xPixelVoiture = xPixelVoiture;
+	}
+	
+	public void setYPixelVoiture(int yPixelVoiture) {
+		this.yPixelVoiture = yPixelVoiture;
 	}
 
 }

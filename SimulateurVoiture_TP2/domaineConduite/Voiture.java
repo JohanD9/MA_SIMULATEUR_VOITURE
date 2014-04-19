@@ -1,49 +1,55 @@
 package domaineConduite;
 
 import java.util.Observable;
+import domaineConduite.Direction;
 
 public class Voiture extends Observable {
 
 	private int coordXEnMetres;
 	private int vitesseMetreParSecondes;
 	private int coordYEnMetres;
-	private int longueurVoiture;
+	private int tailleVoiture;
 	private Direction direction;
 
-	public static final int largeurDomaine = 1000;
+	public static final int tailleDomaine = 1000;
 	private final int modificationVitesseMetreSeconde = 10;
 
 	public Voiture(int coordXEnMetres) {
 		this.coordXEnMetres = coordXEnMetres;
+		this.vitesseMetreParSecondes = 0;
+		this.direction = Direction.DROITE;
 	}
 	
 	public Voiture(int coordXEnMetres, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
-		this.longueurVoiture = longueurVoiture;
+		this.tailleVoiture = longueurVoiture;
 		this.vitesseMetreParSecondes = 0;
-	}
-
-	public Voiture(int coordXEnMetres, int coordYEnMetres, int vitesseMetreParSecondes, int longueurVoiture)
-	{
-		this.coordXEnMetres = coordXEnMetres;
-		this.coordYEnMetres = coordYEnMetres;
-		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
-		this.longueurVoiture = longueurVoiture;
 		this.direction = Direction.DROITE;
 	}
 	
-	public Voiture(int coordXEnMetres, int vitesseMetreParSecondes, int longueurVoiture) {
+	public Voiture(int coordXEnMetres, int coordYEnMetres, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
-		this.longueurVoiture = longueurVoiture;
+		this.coordYEnMetres = coordYEnMetres;
+		this.tailleVoiture = longueurVoiture;
+		this.vitesseMetreParSecondes = 0;
+		this.direction = Direction.DROITE;
+	}
+
+	public Voiture(int coordXEnMetres, int coordYEnMetres,
+			int vitesseMetreParSecondes, int longueurVoiture) {
+		this.coordXEnMetres = coordXEnMetres;
+		this.coordYEnMetres = coordYEnMetres;
 		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
+		this.tailleVoiture = longueurVoiture;
+		this.direction = Direction.DROITE;
 	}
 
 	public int getLongueurVoiture() {
-		return longueurVoiture;
+		return tailleVoiture;
 	}
 
 	public void setLongueurVoiture(int longueurVoiture) {
-		this.longueurVoiture = longueurVoiture;
+		this.tailleVoiture = longueurVoiture;
 	}
 
 	public int getCoordXEnMetres() {
@@ -71,14 +77,42 @@ public class Voiture extends Observable {
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		if((coordXEnMetres + vitesseMetreParSecondes + this.longueurVoiture) > largeurDomaine){
-			coordXEnMetres = largeurDomaine - this.longueurVoiture*2;
+		switch (this.direction) {
+		case HAUT: {
+			if ((coordYEnMetres - vitesseMetreParSecondes - this.tailleVoiture) < 0) {
+				coordYEnMetres = 0;
+				System.out.println("bord HAut");
+			} else {
+				coordYEnMetres -= vitesseMetreParSecondes;
+			}
+			break;
+		}
+		case BAS: {
+			if ((coordYEnMetres + vitesseMetreParSecondes + this.tailleVoiture) > tailleDomaine) {
+				coordYEnMetres = tailleDomaine - this.tailleVoiture * 2;
 
+			} else {
+				coordYEnMetres += vitesseMetreParSecondes;
+			}
+			break;
 		}
-		else{
-			coordXEnMetres += vitesseMetreParSecondes;
+		case GAUCHE: {
+			if ((coordXEnMetres - vitesseMetreParSecondes - this.tailleVoiture) < 0) {
+				coordXEnMetres = 0;
+			} else {
+				coordXEnMetres -= vitesseMetreParSecondes;
+			}
+			break;
 		}
-		
+		case DROITE: {
+			if ((coordXEnMetres + vitesseMetreParSecondes + this.tailleVoiture) > tailleDomaine) {
+				coordXEnMetres = tailleDomaine - this.tailleVoiture * 2;
+			} else {
+				coordXEnMetres += vitesseMetreParSecondes;
+			}
+			break;
+		}
+		}
 		notificationObservateurs();
 	}
 
