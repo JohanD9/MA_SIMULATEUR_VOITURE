@@ -159,4 +159,8 @@ public class Voiture extends Observable {
 			default :
 		}
 	}
+
+	public void setVitesseMetreParSecondes(int vitesseMetreParSecondes) {
+		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
+	}
 }
