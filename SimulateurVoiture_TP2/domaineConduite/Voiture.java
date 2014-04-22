@@ -19,14 +19,14 @@ public class Voiture extends Observable {
 		this.vitesseMetreParSecondes = 0;
 		this.direction = Direction.DROITE;
 	}
-	
+
 	public Voiture(int coordXEnMetres, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
 		this.tailleVoiture = longueurVoiture;
 		this.vitesseMetreParSecondes = 0;
 		this.direction = Direction.DROITE;
 	}
-	
+
 	public Voiture(int coordXEnMetres, int coordYEnMetres, int longueurVoiture) {
 		this.coordXEnMetres = coordXEnMetres;
 		this.coordYEnMetres = coordYEnMetres;
@@ -119,45 +119,6 @@ public class Voiture extends Observable {
 	private void notificationObservateurs() {
 		this.setChanged();
 		this.notifyObservers();
-	}
-	public void accelerationVitesseMetreSeconde() {
-		this.vitesseMetreParSecondes = this.vitesseMetreParSecondes + modificationVitesseMetreSeconde;
-		
-	}
-
-	public void ralentissementVitesseMetreSeconde() {
-		this.vitesseMetreParSecondes = this.vitesseMetreParSecondes - modificationVitesseMetreSeconde;
-		
-	}
-	
-	public void modifierVitesseMetreSeconde(Direction direction) {
-		switch(direction) {
-			case HAUT : if(this.direction == Direction.HAUT) {
-							accelerationVitesseMetreSeconde();
-						} else if (this.direction == Direction.BAS) {
-							ralentissementVitesseMetreSeconde();
-						}
-				break;
-			case DROITE: if(this.direction == Direction.DROITE) {
-							accelerationVitesseMetreSeconde();
-						} else if (this.direction == Direction.GAUCHE) {
-							ralentissementVitesseMetreSeconde();
-						}
-				break;
-			case BAS : if(this.direction == Direction.BAS) {
-							accelerationVitesseMetreSeconde();
-						} else if (this.direction == Direction.HAUT) {
-							ralentissementVitesseMetreSeconde();
-						}
-				break;
-			case GAUCHE :  if(this.direction == Direction.GAUCHE) {
-								accelerationVitesseMetreSeconde();
-							} else if (this.direction == Direction.DROITE) {
-								ralentissementVitesseMetreSeconde();
-							}
-				break;
-			default :
-		}
 	}
 
 	public void setVitesseMetreParSecondes(int vitesseMetreParSecondes) {

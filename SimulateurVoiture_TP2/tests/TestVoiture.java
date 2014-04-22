@@ -34,6 +34,25 @@ public class TestVoiture {
 
 		assertEquals(voiture.getDirection(), Direction.DROITE);
 	}
+	
+	@Test
+	public void testGetLongueurVoiture() {
+		Voiture voiture = new Voiture(20, 20, 20, 50);
+
+		int longVoiture = voiture.getLongueurVoiture();
+
+		assertEquals(50, longVoiture);
+
+	}
+
+	@Test
+	public void testGetVitesseMetreParSeconde() {
+		Voiture voiture = new Voiture(20, 10, 30, 20);
+
+		int vitesse = voiture.getVitesseMetreParSecondes();
+
+		assertEquals(30, vitesse);
+	}
 
 	@Test
 	public void testSetY() {
@@ -53,6 +72,15 @@ public class TestVoiture {
 		assertEquals(voiture.getDirection(), Direction.HAUT);
 	}
 
+	@Test
+	public void testSetVitesseMetreParSeconde() {
+		Voiture voiture = new Voiture(20, 20, 20, 20);
+
+		voiture.setVitesseMetreParSecondes(60);
+
+		assertEquals(voiture.getVitesseMetreParSecondes(), 60);
+	}
+	
 	@Test
 	public void testVitesseX() {
 		Voiture voiture = new Voiture(20, 20, 150, 20);

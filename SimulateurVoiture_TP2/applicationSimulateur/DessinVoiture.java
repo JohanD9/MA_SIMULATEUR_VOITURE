@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import domaineConduite.Direction;
 import domaineConduite.Voiture;
@@ -16,6 +17,7 @@ public class DessinVoiture extends JFrame {
 	private Voiture voiture;
 	private int xPixelVoiture;
 	private int yPixelVoiture;
+	private int vitesseMax = 150;
 
 	public DessinVoiture(Voiture voitureParam) {
 		super();
@@ -27,6 +29,7 @@ public class DessinVoiture extends JFrame {
 		this.setFocusable(true);
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.voiture = voitureParam;
 		this.addKeyListener(new KeyListener() {
 
@@ -44,12 +47,13 @@ public class DessinVoiture extends JFrame {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				Direction dirPrecedente = DessinVoiture.this.voiture
-						.getDirection();
+
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-					voiture.setVitesseMetreParSecondes(voiture
-							.getVitesseMetreParSecondes() + 10);
+					if (voiture.getVitesseMetreParSecondes() < vitesseMax) {
+						voiture.setVitesseMetreParSecondes(voiture
+								.getVitesseMetreParSecondes() + 10);
+					}
 					break;
 
 				case KeyEvent.VK_DOWN:
@@ -67,9 +71,7 @@ public class DessinVoiture extends JFrame {
 					voiture.setDirection(tournerAGauche(voiture.getDirection()));
 					break;
 				}
-				if (dirPrecedente != DessinVoiture.this.voiture.getDirection()) {
-					DessinVoiture.this.voiture.avancerEnFonctionDeLaVitesse();
-				}
+				DessinVoiture.this.voiture.avancerEnFonctionDeLaVitesse();
 			}
 
 			public Direction tournerADroite(Direction dir) {
@@ -90,7 +92,7 @@ public class DessinVoiture extends JFrame {
 
 				}
 			}
-			
+
 			public Direction tournerAGauche(Direction dir) {
 				switch (dir) {
 				case HAUT:
